@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "406452227174",
+    "firebase_url": "https://kidfitgames.firebaseio.com",
+    "project_id": "kidfitgames",
+    "storage_bucket": "kidfitgames.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406452227174:android:5b9b09f9c1802225",
+        "android_client_info": {
+          "package_name": "com.boisestate.kidFit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "406452227174-11fg4ddero1s4ngnrt753ch75pj5gosm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhukMMK0vTOr8Eu_hl5dhqad9RiAfjP74"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

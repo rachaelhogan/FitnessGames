@@ -1,0 +1,27 @@
+<!--
+  Generated template for the HotPotatoScoreBoardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>hotPotatoScoreBoard</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<h1 *ngIf="statusLost"> Sorry! you Lost</h1>
+<h1 *ngIf="!statusLost"> Yayyy! you Won</h1>
+
+<ion-item *ngIf="playerList.length>0">
+  Players
+  <ion-list>
+      <ion-item text-wrap *ngFor="let player of playerList;let i = index " >{{player}} </ion-item>
+  </ion-list>
+</ion-item>
+
+</ion-content>
