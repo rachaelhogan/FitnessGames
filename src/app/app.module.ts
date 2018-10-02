@@ -1,17 +1,13 @@
+import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-import {HttpClientModule} from '@angular/common/http';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { WelcomePage } from '../pages/welcome/welcome';
+import {HttpClientModule} from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { Push } from '@ionic-native/push';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { WelcomePage } from '../pages/welcome/welcome';
-import { FCM } from '@ionic-native/fcm';
-import { NotificationDataProvider } from '../providers/notification-data/notification-data';
 
 @NgModule({
   declarations: [
@@ -21,7 +17,6 @@ import { NotificationDataProvider } from '../providers/notification-data/notific
   imports: [
     BrowserModule,
     HttpClientModule,
-    NgxDatatableModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -34,10 +29,7 @@ import { NotificationDataProvider } from '../providers/notification-data/notific
     StatusBar,
     SplashScreen,
     InAppBrowser,
-    Push,
-    FCM,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
-    NotificationDataProvider
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

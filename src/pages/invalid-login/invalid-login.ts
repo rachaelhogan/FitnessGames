@@ -15,9 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InvalidLoginPage {
 
-  errormsg = null;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.errormsg = this.navParams.get('error');
   }
 
   ionViewDidLoad() {

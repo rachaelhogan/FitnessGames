@@ -1,8 +1,7 @@
 {
-  "name": "fitPlayApp",
+  "name": "ionic2-app-base",
   "integrations": {
     "cordova": {}
   },
-  "type": "ionic-angular",
-  "pro_id": "a24e6187"
+  "type": "ionic-angular"
 }
