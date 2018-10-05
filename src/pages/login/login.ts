@@ -31,7 +31,7 @@ export class LoginPage {
   }
 
   login() {
-    var link_register = 'https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=228NH4&redirect_uri=http%3A%2F%2Fkidsteam.boisestate.edu%2Fkidfit%2Fhandle_redirect.php&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&prompt=login consent&state=';
+    var link_register = 'https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=228NH4&redirect_uri=http%3A%2F%2Fkidsteam.boisestate.edu%2Fkidfit%2Fhandle_redirect.php&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&prompt=login%20consent&state=';
     var link = 'https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=228NH4&redirect_uri=http%3A%2F%2Fkidsteam.boisestate.edu%2Fkidfit%2Fhandle_redirect.php&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&state=';
     this.getLoginUserDetails().then(
      data => {
@@ -114,7 +114,7 @@ export class LoginPage {
   }
 
   register(){
-    var link = 'https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=228NH4&redirect_uri=http%3A%2F%2Fkidsteam.boisestate.edu%2Fkidfit%2Fhandle_redirect.php&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&prompt=login consent&state=';
+    var link = 'https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=228NH4&redirect_uri=http%3A%2F%2Fkidsteam.boisestate.edu%2Fkidfit%2Fhandle_redirect.php&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&prompt=login%20consent&state=';
     this.getRegisterUserDetails().then(
     data => {
       console.log('my data (REGISTER): ', data);
@@ -157,7 +157,7 @@ export class LoginPage {
   // Method to verify Login
   getRegisterUserDetails()
     {
-      var link = 'http://kidsteam.boisestate.edu/kidfit/verify_login.php?username='.concat(this.data.username);
+      var link = 'http://kidsteam.boisestate.edu/kidfit/signup.php?username='.concat(this.data.username);
       link = link.concat('&password=');
       link = link.concat(this.data.password);
       link = link.concat('&loginType=register');
