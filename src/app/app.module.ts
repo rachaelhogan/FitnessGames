@@ -8,6 +8,7 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import {HttpClientModule} from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+//import { Serializable } from 'ts-json-serializer';
 
 @NgModule({
   declarations: [

@@ -27,5 +27,6 @@ export class WelcomePage {
   GetStarted()
   {
     this.navCtrl.push('LoginPage');
+    //this.navCtrl.push('ScavengerHuntPage');
   }
 }
