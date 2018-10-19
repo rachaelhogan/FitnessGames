@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ScavengerHuntPage } from './scavenger-hunt';
+import { ScavengerHuntPage } from './scavengerhunt';
 
 @NgModule({
   declarations: [
