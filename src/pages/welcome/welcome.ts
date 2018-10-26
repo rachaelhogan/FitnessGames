@@ -31,4 +31,4 @@ export class WelcomePage {
     //this.navCtrl.push('ScavengerHuntPage');
     //this.navCtrl.push('AddUserPage')
   }
-}
+ }
