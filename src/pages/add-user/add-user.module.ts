@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { AddUserPage } from './add-user';
@@ -10,4 +11,4 @@ import { AddUserPage } from './add-user';
     IonicPageModule.forChild(AddUserPage),
   ],
 })
-export class AddUserPageModule {}
+export class AddPlayersPageModule {}

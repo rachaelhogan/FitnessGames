@@ -1,3 +1,4 @@
+import { AES256 } from '@ionic-native/aes-256';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -30,6 +31,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     StatusBar,
     SplashScreen,
     InAppBrowser,
+    AES256,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
