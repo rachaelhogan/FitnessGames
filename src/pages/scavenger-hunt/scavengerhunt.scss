@@ -1,3 +1,10 @@
 page-scavengerhunt {
-
+        .bg-image1{
+        background-image: url('../assets/imgs/bowl.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+    }
 }
