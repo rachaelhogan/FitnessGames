@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
-import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the ScavengerHuntPage page.
@@ -9,6 +7,14 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+export interface CountdownTimer {
+    seconds: number;
+    secondsRemaining: number;
+    runTimer: boolean;
+    hasStarted: boolean;
+    hasFinished: boolean;
+    displayTime: string;
+}
 
 @IonicPage()
 @Component({
@@ -16,6 +22,30 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
   templateUrl: 'scavengerhunt.html',
 })
 export class ScavengerHuntPage {
+  gameInstanceID = null;
+  username: any;
+  accesstoken: any;
+  groupName = "";
+  ifOwner: boolean;
+  playerList = [];
+  userIDList = [];
+  playerStatusList = [];
+  data: any = {};
+  editing: boolean = false;
+  gameInvited = false;
+  gameInProgress = false;
+  gameReadyToPlay = false;
+  gameOver = false;
+  gameID = null;
+  gameWonOrLost: null;
+  currentActivityTime = 0;
+  startActivityTime = 0;
+  endingActivityTime = 0;
+  timeRemaining: any;
+  timer: CountdownTimer;
+  bgImage: any;
+  brightnessValue = 0.8;
+  selfName = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -24,15 +54,17 @@ export class ScavengerHuntPage {
     console.log('ionViewDidLoad ScavengerHuntPage');
   }
 
-  getImage() {
-    //"assets/imgs/comb.jpg"
-    let path = "assets/imgs/";
-    let list = ["bowl.jpg","broom.jpg","car.jpg","cards.jpg","comb.jpg","cup.jpg",
-                          "fork.jpg","hat.jpg","lego.jpg","plate.jpg","shoes.jpg","socks.jpg",
-                          "spatula.jpg","spoon.jpg","teddybear.jpg","toytrain.jpg","winterhat.jpg"]
+  getImage(player:string) {
+    let list = ["bg-image1","bg-image2","bg-image3","bg-image4",
+                "bg-image5","bg-image6","bg-image7","bg-image8",
+                "bg-image9","bg-image10","bg-image11","bg-image12",
+                "bg-image13","bg-image14","bg-image15","bg-image16","bg-image17"]
     let index = Math.floor(Math.random() * 16);
-    path = path + list[index];
-    return path;
+    var temp = this.bgImage;
+    this.bgImage = list[index];
+    if(temp == this.bgImage){
+      this.getImage(player);
+    }
   }
 
 }

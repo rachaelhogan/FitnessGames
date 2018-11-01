@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the WelcomePage page.
@@ -16,7 +16,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class WelcomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public httpClient:HttpClient,) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public httpClient: HttpClient, ) {
   }
 
   ionViewDidLoad() {
@@ -24,11 +24,10 @@ export class WelcomePage {
 
   }
 
-  GetStarted()
-  {
+  GetStarted() {
     //this.navCtrl.push('AddUserPage');
-   this.navCtrl.push('LoginPage');
-    //this.navCtrl.push('ScavengerHuntPage');
+    //this.navCtrl.push('LoginPage');
+    this.navCtrl.push('ScavengerHuntPage');
     //this.navCtrl.push('AddUserPage')
   }
- }
+}
