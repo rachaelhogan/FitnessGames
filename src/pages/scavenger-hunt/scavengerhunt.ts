@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ResultsPage } from '../results/results';
 
 /**
  * Generated class for the ScavengerHuntPage page.
@@ -67,4 +68,7 @@ export class ScavengerHuntPage {
     }
   }
 
+  endGame(){
+    this.navCtrl.push('ResultsPage')
+  }
 }

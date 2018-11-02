@@ -1,0 +1,55 @@
+
+
+
+
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Results</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+
+
+<ion-content padding class="bg-image">
+    <button ion-button item-right (click)="exit()">Home</button>
+    <button ion-button item-right (click)="newGame()">New Game</button>
+
+    <ion-list>
+        <ion-item>
+          <ion-thumbnail item-start>
+            First Place!
+          </ion-thumbnail>
+          <h2>Player 1</h2>
+          
+          <button ion-button clear item-end (click)="stats()">Stats</button>
+        </ion-item>
+
+        <ion-item>
+            <ion-thumbnail item-start>
+              Second Place!
+            </ion-thumbnail>
+            <h2>Player 6</h2>
+            
+            <button ion-button clear item-end>Stats</button>
+          </ion-item>
+
+          <ion-item>
+              <ion-thumbnail item-start>
+                Third Place!
+              </ion-thumbnail>
+              <h2>Player 5</h2>
+              
+              <button ion-button clear item-end>Stats</button>
+            </ion-item>
+      </ion-list>
+            
+</ion-content>
+
+
+
+

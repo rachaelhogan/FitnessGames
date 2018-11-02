@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { AES256 } from '@ionic-native/aes-256';
 import { AlertController } from 'ionic-angular';
+import { ResultsPage } from '../results/results';
+import { ScavengerHuntPage } from '../scavenger-hunt/scavengerhunt';
 
 /**
  * Generated class for the LoginPage page.
@@ -58,7 +60,14 @@ export class LoginPage {
     });
     alert.present();
   }
-  login() {
+  
+
+  login(){
+    this.navCtrl.push(ScavengerHuntPage)
+  }
+
+
+  loginOriginal() {
     if(!this.data.username)
     {
       this.presentAlert('Please enter an email address')
@@ -135,7 +144,6 @@ export class LoginPage {
      this.data.password="";
   }
   }
-
 
   // VERIFY USER LOGIN
   getLoginUserDetails()
