@@ -45,7 +45,8 @@ export class ScavengerHuntPage {
   timeRemaining: any;
   timer: CountdownTimer;
   bgImage: any;
-  brightnessValue = 0.8;
+  brightnessValue = 0;
+  playerCount = 0;
   selfName = "";
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -53,6 +54,8 @@ export class ScavengerHuntPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScavengerHuntPage');
+    this.playerCount = this.playerList.length;
+    this.bgImage = "bg-start";
   }
 
   getImage(player:string) {

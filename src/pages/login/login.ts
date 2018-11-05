@@ -62,12 +62,12 @@ export class LoginPage {
   }
   
 
-  login(){
-    this.navCtrl.push(ScavengerHuntPage)
-  }
+  // login(){
+  //   this.navCtrl.push(ScavengerHuntPage)
+  // }
 
 
-  loginOriginal() {
+  login() {
     if(!this.data.username)
     {
       this.presentAlert('Please enter an email address')
