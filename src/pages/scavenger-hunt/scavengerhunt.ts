@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { Component,NgZone } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { HttpClient } from '@angular/common/http';
+import { Events } from 'ionic-angular';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import { ResultsPage } from '../results/results';
 
 /**
@@ -45,17 +49,28 @@ export class ScavengerHuntPage {
   timeRemaining: any;
   timer: CountdownTimer;
   bgImage: any;
+  p1Image: any;
+  p2Image: any;
+  p3Image: any;
+  p4Image: any;
+  p5Image: any;
+  p6Image: any;
   brightnessValue = 0;
   playerCount = 0;
   selfName = "";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage:Storage,public httpClient:HttpClient,private zone : NgZone,public events: Events, private alertCtrl: AlertController) {
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScavengerHuntPage');
-    this.playerCount = this.playerList.length;
-    this.bgImage = "bg-start";
+    this.p1Image="bg-start";
+    this.p2Image="bg-image1";
+    this.p3Image="bg-image2";
+    this.p4Image="bg-start";
+    this.p5Image="bg-start";
+    this.p6Image="bg-start";
   }
 
   getImage(player:string) {
