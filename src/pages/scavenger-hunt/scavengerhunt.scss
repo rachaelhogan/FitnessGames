@@ -1,164 +1,201 @@
 page-scavengerhunt {
+
+    .icons{
+        size: 100%;
+    }
+
     .bg-start{
         background-image: url('../assets/imgs/start.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: 100% 100%;
+        background-size: auto;
+        padding: "getWidth()";
     }
 
     .bg-image1{
         background-image: url('../assets/imgs/bowl.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
         background-size: auto;
+        padding: 100%
+        // -webkit-background-size: 250px 250px;
+        // -moz-background-size: 250px 250px;
+        // background-size: 250px 250px;
     }
 
     .bg-image2{
         background-image: url('../assets/imgs/broom.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
         background-size: auto;
+        padding: 100%
+        // -webkit-background-size: auto;
+        // -moz-background-size: auto;
+        // background-size: auto;
     }
 
     .bg-image3{
         background-image: url('../assets/imgs/car.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
         background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: auto;
     }
 
     .bg-image4{
         background-image: url('../assets/imgs/cards.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
         background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: auto;
     }
 
     .bg-image5{
         background-image: url('../assets/imgs/comb.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
         background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: auto;
     }
 
     .bg-image6{
         background-image: url('../assets/imgs/cup.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
         background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: auto;
     }
 
     .bg-image7{
         background-image: url('../assets/imgs/fork.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
         background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: auto;
     }
 
     .bg-image8{
         background-image: url('../assets/imgs/hat.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
         background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: auto;
     }
 
     .bg-image9{
         background-image: url('../assets/imgs/lego.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
         background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: auto;
     }
 
     .bg-image10{
         background-image: url('../assets/imgs/plate.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
         background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: auto;
     }
 
     .bg-image11{
         background-image: url('../assets/imgs/shoes.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
         background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: auto;
     }
 
     .bg-image12{
         background-image: url('../assets/imgs/socks.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
+        background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: cover;
     }
 
     .bg-image13{
         background-image: url('../assets/imgs/spatula.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
+        background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: cover;
     }
 
     .bg-image14{
         background-image: url('../assets/imgs/spoon.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
+        background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: cover;
     }
 
     .bg-image15{
         background-image: url('../assets/imgs/teddybear.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
+        background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: cover;
     }
 
     .bg-image16{
         background-image: url('../assets/imgs/toytrain.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
+        background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: cover;
     }
 
     .bg-image17{
         background-image: url('../assets/imgs/winterhat.jpg');
         background-repeat: no-repeat;
         background-position: center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        background-size: cover;
+        background-size: auto;
+        padding: 100%
+        // -webkit-background-size: cover;
+        // -moz-background-size: cover;
+        // background-size: cover;
     }
-
 }

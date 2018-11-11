@@ -11,40 +11,11 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-6 col-sm>
-        <ion-buttons (click)="getImage(p1Image)">
-          <button class="{{p1Image}}">
-            <ion-icon name="p1">"Player One"</ion-icon>
-          </button>
-        </ion-buttons>
-      </ion-col>
-      <ion-col col-6 col-sm>
-        <ion-buttons (click)="getImage(p2Image)">
-          <button class="{{p2Image}}">
-            <ion-icon name="p2"></ion-icon>
-          </button>
-        </ion-buttons>
-      </ion-col>
-      <ion-col col-6 col-sm>
-        <ion-buttons (click)="getImage(p3Image)">
-          <button class="{{p3Image}}">
-            <ion-icon name="p3"></ion-icon>
-          </button>
-        </ion-buttons>
-      </ion-col>
-      <ion-col col-6 col-sm>
-        <button class="{{p4Image}}" (click)="getImage(p4Image)" name="p4">{{p4Text}}</button>
-      </ion-col>
-      <ion-col col-6 col-sm>
-        <button class="{{p5Image}}" (click)="getImage(p5Image)" name="p5">{{p5Text}}</button>
-      </ion-col>
-      <ion-col col-6 col-sm>
-        <button class="{{p6Image}}" (click)="getImage(p6Image)" name="p6">{{p6Text}}</button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-buttons>
+    <button class="{{p1Image}}" (click)="getImage()">
+      {{playerData}}
+    </button>
+  </ion-buttons>
 
   <button ion-button clear item-end (click)="endGame()">End Game</button>
 </ion-content>

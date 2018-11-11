@@ -55,6 +55,7 @@ export class ScavengerHuntPage {
   p4Image: any;
   p5Image: any;
   p6Image: any;
+  wWidth: number;
   brightnessValue = 0;
   playerCount = 0;
   selfName = "";
@@ -63,26 +64,33 @@ export class ScavengerHuntPage {
 
   }
 
+  
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScavengerHuntPage');
+    this.wWidth = window.screenX
     this.p1Image="bg-start";
-    this.p2Image="bg-image1";
-    this.p3Image="bg-image2";
+    this.p2Image="bg-start";
+    this.p3Image="bg-start";
     this.p4Image="bg-start";
     this.p5Image="bg-start";
     this.p6Image="bg-start";
   }
 
-  getImage(player:string) {
+  getWidth(){
+    return this.wWidth;
+  }
+
+  getImage() {
     let list = ["bg-image1","bg-image2","bg-image3","bg-image4",
                 "bg-image5","bg-image6","bg-image7","bg-image8",
                 "bg-image9","bg-image10","bg-image11","bg-image12",
                 "bg-image13","bg-image14","bg-image15","bg-image16","bg-image17"]
-    let index = Math.floor(Math.random() * 16);
-    var temp = this.bgImage;
-    this.bgImage = list[index];
-    if(temp == this.bgImage){
-      this.getImage(player);
+    let index = Math.floor(Math.random() * 17);
+    var temp = this.p1Image;
+    this.p1Image = list[index];
+    if(temp == this.p1Image){
+      this.getImage();
     }
   }
 
