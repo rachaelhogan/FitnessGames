@@ -26,6 +26,7 @@ export interface CountdownTimer {
   selector: 'page-scavengerhunt',
   templateUrl: 'scavengerhunt.html',
 })
+
 export class ScavengerHuntPage {
   gameInstanceID = null;
   username: any;
@@ -64,11 +65,9 @@ export class ScavengerHuntPage {
 
   }
 
-  
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScavengerHuntPage');
-    this.wWidth = window.screenX
+    this.wWidth = window.innerWidth;
     this.p1Image="bg-start";
     this.p2Image="bg-start";
     this.p3Image="bg-start";
