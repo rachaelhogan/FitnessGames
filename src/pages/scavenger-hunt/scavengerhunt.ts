@@ -49,13 +49,14 @@ export class ScavengerHuntPage {
   endingActivityTime = 0;
   timeRemaining: any;
   timer: CountdownTimer;
+  itemcount: any;
   bgImage: any;
   p1Image: any;
-  p2Image: any;
-  p3Image: any;
-  p4Image: any;
-  p5Image: any;
-  p6Image: any;
+  // p2Image: any;
+  // p3Image: any;
+  // p4Image: any;
+  // p5Image: any;
+  // p6Image: any;
   wWidth: number;
   brightnessValue = 0;
   playerCount = 0;
@@ -69,11 +70,12 @@ export class ScavengerHuntPage {
     console.log('ionViewDidLoad ScavengerHuntPage');
     this.wWidth = window.innerWidth;
     this.p1Image="bg-start";
-    this.p2Image="bg-start";
-    this.p3Image="bg-start";
-    this.p4Image="bg-start";
-    this.p5Image="bg-start";
-    this.p6Image="bg-start";
+    this.storage.set("itemCount",0);
+    // this.p2Image="bg-start";
+    // this.p3Image="bg-start";
+    // this.p4Image="bg-start";
+    // this.p5Image="bg-start";
+    // this.p6Image="bg-start";
   }
 
   getWidth(){
@@ -91,6 +93,9 @@ export class ScavengerHuntPage {
     if(temp == this.p1Image){
       this.getImage();
     }
+    this.itemcount = (this.storage.get("itemCount"));
+    this.itemcount += 1;
+    this.storage.set("itemCount", this.itemcount);
   }
 
   endGame(){
