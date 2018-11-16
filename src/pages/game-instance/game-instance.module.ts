@@ -10,4 +10,4 @@ import { GameInstancePage } from './game-instance';
     IonicPageModule.forChild(GameInstancePage),
   ],
 })
-export class WelcomePageModule {}
+export class GameInstancePageModule {}

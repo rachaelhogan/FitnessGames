@@ -20,6 +20,7 @@
     <button ion-button item-right (click)="newGame()">New Game</button>
 
     <ion-list>
+<<<<<<< HEAD
         <ion-item>
           <ion-thumbnail item-start>
             First Place!
@@ -46,6 +47,10 @@
               
               <button ion-button clear item-end>Stats</button>
             </ion-item>
+=======
+        <ion-item text-wrap *ngFor="let playerWin of playerWinNameList;let i = index ">{{playerWin}}</ion-item>
+      <ion-item text-wrap *ngFor="let player of playerList;let i = index ">{{player}}</ion-item>
+>>>>>>> origin/RachaelBranch
       </ion-list>
             
 </ion-content>

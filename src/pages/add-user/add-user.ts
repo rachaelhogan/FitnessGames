@@ -36,9 +36,9 @@ export class AddUserPage {
 
   getGameID()
   {
-    var link = 'https://kidsteam.boisestate.edu/kidfit/get_gameID.php?gameName=escapeTheTunnelSyncCollaborative';
+    var link = 'https://kidsteam.boisestate.edu/kidfit/get_gameID.php?gameName=scavengerHunt';
     link=link.concat('&metric=')
-    link=link.concat('activityTime')
+    link=link.concat('steps')
     return new Promise(resolve => {
       this.httpClient.get(link)
           .subscribe(data => {

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ScavengerHuntPage } from './scavengerhunt';
+import { gameStartPage } from './gameStart';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -8,14 +8,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @NgModule({
   declarations: [
-    ScavengerHuntPage,
+    gameStartPage,
   
   ],
   imports: [
-    IonicPageModule.forChild(ScavengerHuntPage),
+    IonicPageModule.forChild(gameStartPage),
   ],
   
 })
-export class ScavengerHuntPageModule {
+export class gameStartPageModule {
   
 }

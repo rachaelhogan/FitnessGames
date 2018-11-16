@@ -23,6 +23,7 @@ export class DisplayDataPage {
   username:any=null;
   accesstoken:any=null;
   gameID:null;
+  userSteps:null;
   // Invited Games
   invitedGameInstances=[];
   invitedGames=[];
@@ -65,6 +66,7 @@ export class DisplayDataPage {
     this.userdata=this.navParams.get('data')
     this.userActiveMinutes =this.userdata['fairlyActiveMinutes']+this.userdata['veryActiveMinutes'];
     this.userName=this.userdata['username'] 
+    this.userSteps=this.userdata['steps'];
     console.log("data in displaydatapage",this.userdata)
   }
 
@@ -286,7 +288,7 @@ openGameDetails(gameType, gameIndex)
        gameInstance = this.activeGameInstances[gameIndex];
     }
 
-   this.navCtrl.push('GameInstancePage',{gameInstanceID:gameInstance});
+   this.navCtrl.push('GameInstancePage',{gameInstanceID:gameInstance,steps:this.userSteps});
   }
 
 refreshView()
@@ -453,9 +455,9 @@ refreshFinishedGames()
 
 getGameID()
 {
-  var link = 'https://kidsteam.boisestate.edu/kidfit/get_gameID.php?gameName=escapeTheTunnelSyncCollaborative';
+  var link = 'https://kidsteam.boisestate.edu/kidfit/get_gameID.php?gameName=scavengerHunt';
   link=link.concat('&metric=')
-  link=link.concat('activityTime')
+  link=link.concat('steps')
   return new Promise(resolve => {
     this.httpClient.get(link)
         .subscribe(data => {

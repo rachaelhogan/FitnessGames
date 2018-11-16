@@ -1,9 +1,5 @@
-import { Component,NgZone } from '@angular/core';
-import { Storage } from '@ionic/storage';
-import { HttpClient } from '@angular/common/http';
-import { Events } from 'ionic-angular';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
 import { ResultsPage } from '../results/results';
 
 /**
@@ -26,7 +22,6 @@ export interface CountdownTimer {
   selector: 'page-scavengerhunt',
   templateUrl: 'scavengerhunt.html',
 })
-
 export class ScavengerHuntPage {
   gameInstanceID = null;
   username: any;
@@ -49,55 +44,42 @@ export class ScavengerHuntPage {
   endingActivityTime = 0;
   timeRemaining: any;
   timer: CountdownTimer;
-  itemcount: any;
   bgImage: any;
-  p1Image: any;
-  // p2Image: any;
-  // p3Image: any;
-  // p4Image: any;
-  // p5Image: any;
-  // p6Image: any;
-  wWidth: number;
-  brightnessValue = 0;
-  playerCount = 0;
+  brightnessValue = 0.8;
   selfName = "";
+  userSteps;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storage:Storage,public httpClient:HttpClient,private zone : NgZone,public events: Events, private alertCtrl: AlertController) {
-
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  //constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.userSteps= this.navParams.get('steps');
+  
+  }
+  manipulateSteps(){
+    this.userSteps=1000;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ScavengerHuntPage');
-    this.wWidth = window.innerWidth;
-    this.p1Image="bg-start";
-    this.storage.set("itemCount",0);
-    // this.p2Image="bg-start";
-    // this.p3Image="bg-start";
-    // this.p4Image="bg-start";
-    // this.p5Image="bg-start";
-    // this.p6Image="bg-start";
   }
 
-  getWidth(){
-    return this.wWidth;
-  }
+  
 
-  getImage() {
+  getImage(player:string) {
     let list = ["bg-image1","bg-image2","bg-image3","bg-image4",
                 "bg-image5","bg-image6","bg-image7","bg-image8",
                 "bg-image9","bg-image10","bg-image11","bg-image12",
                 "bg-image13","bg-image14","bg-image15","bg-image16","bg-image17"]
-    let index = Math.floor(Math.random() * 17);
-    var temp = this.p1Image;
-    this.p1Image = list[index];
-    if(temp == this.p1Image){
-      this.getImage();
+    let index = Math.floor(Math.random() * 16);
+    var temp = this.bgImage;
+    this.bgImage = list[index];
+    if(temp == this.bgImage){
+      this.getImage(player);
     }
-    this.itemcount = (this.storage.get("itemCount"));
-    this.itemcount += 1;
-    this.storage.set("itemCount", this.itemcount);
   }
 
+  blank(){
+    
+  }
   endGame(){
     this.navCtrl.push('ResultsPage')
   }

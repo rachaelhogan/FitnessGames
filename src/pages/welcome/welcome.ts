@@ -1,4 +1,3 @@
-import { ScavengerHuntPage } from './../scavenger-hunt/scavengerhunt';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
@@ -27,8 +26,9 @@ export class WelcomePage {
 
   GetStarted() {
     //this.navCtrl.push('AddUserPage');
-    //this.navCtrl.push('LoginPage');
-    this.navCtrl.push('ScavengerHuntPage');
+    this.navCtrl.push('LoginPage');
+    //this.navCtrl.push('gameStartPage');
+   //this.navCtrl.push('ScavengerHuntPage');
     //this.navCtrl.push('AddUserPage')
     //this.navCtrl.push('ResultsPage')
   }
