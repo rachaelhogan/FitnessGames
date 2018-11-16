@@ -1,0 +1,62 @@
+<!--
+  Generated template for the LoginPage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list >
+        
+
+        <ion-item no-lines>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" name="username" [(ngModel)]="data.username"></ion-input>
+        </ion-item>
+       
+        <ion-item no-lines>
+        <ion-label floating>Password</ion-label>
+        <ion-input type={{type}} name="password" [(ngModel)]="data.password"></ion-input>
+        <button ion-button clear item-end (click)='showHide()' style="height:32px;">
+            <ion-icon name="eye" style="font-size:32px;"></ion-icon>
+          </button>
+        
+        </ion-item>
+
+        <ion-item no-lines *ngIf="registering">
+          <ion-label floating>Alias</ion-label>
+          <ion-input type="text" name="nickname" [(ngModel)]="userdata.nickname"></ion-input>
+          </ion-item>
+
+      <ion-item no-lines *ngIf="registering">
+          <ion-label floating placeholder = 'your age'>Age</ion-label>
+          <ion-input type="number" name="age" [(ngModel)]="userdata.age"></ion-input>
+          </ion-item>
+        <br/>
+      <ion-item no-lines *ngIf="registering">
+          <ion-label>Gender</ion-label>
+          <ion-select [(ngModel)]="userdata.gender">
+            <ion-option value="Female">Female</ion-option>
+            <ion-option value="Male">Male</ion-option>
+          </ion-select>
+        </ion-item>
+        
+        <p ion-text [color]="gray">*This app records your fitness data.</p>
+       
+        <button ion-button full (click)="login()">Login</button>
+      <br/>
+       
+        <button *ngIf="!registering" ion-button color="light" full (click)="register()">Register</button>
+        <button *ngIf="registering" ion-button full (click)="register()">Register</button>
+        
+      </ion-list>
+
+</ion-content>

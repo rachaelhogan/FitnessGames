@@ -1,0 +1,97 @@
+<!--
+  Generated template for the DisplayDataPage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar hideBackButton align-title="item-center">
+      <ion-title>Games</ion-title>
+  
+      <ion-buttons end (click)="refreshView()">
+          <button>
+            <ion-icon name="refresh"></ion-icon>
+          </button>
+        </ion-buttons>
+      
+    </ion-navbar>
+  
+  </ion-header>
+  
+  
+  <ion-content padding>
+  <ion-item no-lines text-wrap>
+    Hi {{userName}}! 
+    <p>You have {{userActiveMinutes}} minutes of activity today. </p>
+  </ion-item>
+  
+  <button ion-button full (click)="escapeTheTunnel()">Start New Game</button>
+  <br/>
+  
+  
+  <ion-list no-lines>
+    <!-- INVITED GAMES -->
+    <ion-item (click)="expandInvitedGames()" >Invited Games <ion-icon item-right name={{invitedGameArrow}}></ion-icon>
+    </ion-item>
+    
+  
+    <!--  INVITED ACCEPTED GAMES -->
+    <ion-item  *ngIf="expandInvitedGame">
+      <ion-item   *ngFor="let invite of invitedAcceptedGroupNameList;let i = index "(click)="openGameDetails(1,i)"><p>{{invite}}</p> </ion-item>
+    
+  
+     <!-- OTHER INVITED GAMES -->
+    
+        <ion-item  *ngFor="let invite of invitedGroupNameList;let i = index" (click)="openGameDetails(2,i)"><p>{{invite}} </p>
+            <button ion-button item-right (click)="acceptInvite(invite,i);$event.stopPropagation();"  >Accept</button>
+            <button ion-button item-right (click)="DeclineInvite(invite,i);$event.stopPropagation();"  >Decline</button>    
+        </ion-item>
+      </ion-item>
+   
+  
+  
+  
+    <!-- ACTIVE/READYTOPLAY GAMES -->
+    <ion-item (click)="expandActiveGames()">Active Games <ion-icon item-right name={{activeGameArrow}}></ion-icon>
+    </ion-item>
+    <!-- READY TO PLAY GAMES -->
+    <ion-item  *ngIf="expandActiveGame">
+        <ion-item *ngFor="let readyToPlayGame of readyToPlayGroupNameList; let i= index" (click)="openGameDetails(3,i)"><p>{{readyToPlayGame}}</p></ion-item>
+    
+   <!-- ACTIVE GAMES -->
+  
+   <ion-item  *ngFor="let activeGame of activeGroupNameList; let i= index" (click)="openGameDetails(4,i)"><p>{{activeGame}}</p>
+      <!-- <label ion-label item-right text-wrap >{{displayTimeList[i]}}</label> -->
+    </ion-item>
+  </ion-item>
+    
+    
+  
+    <!-- FINISHED GAMES -->
+    <ion-item (click)="expandCompletedGames()">Completed Games <ion-icon item-right name={{completedGameArrow}}></ion-icon>
+    </ion-item>
+      <ion-item  *ngIf="expandCompletedGame">
+          <ion-item *ngFor = "let finishGame of gameOverGroupNameList;let i=index"><p>{{finishGame}}</p>
+              <label ion-label item-right text-wrap>{{gameOverMyStatusList[i]}}</label>
+          </ion-item>
+      </ion-item>
+    
+  </ion-list>
+  
+  </ion-content>
+  
+  
+  
+  
+  
+  
+  <!-- LOGOUT BUTTON -->
+  <ion-footer no-shadow>
+  <ion-toolbar position="bottom">
+  <div>
+    <h6 align="center" >Not {{userName}}?</h6>
+  </div>
+  <button ion-button full color="light" (click)="Logout()">Logout</button>
+  </ion-toolbar>
+  </ion-footer>
+  

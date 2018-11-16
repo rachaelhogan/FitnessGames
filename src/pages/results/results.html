@@ -1,0 +1,31 @@
+
+
+
+
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Results</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+
+
+
+<ion-content padding class="bg-image">
+    <button ion-button item-right (click)="exit()">Home</button>
+    <button ion-button item-right (click)="newGame()">New Game</button>
+
+    <ion-list>
+        <ion-item text-wrap *ngFor="let playerWin of playerWinNameList;let i = index ">{{playerWin}}</ion-item>
+      <ion-item text-wrap *ngFor="let player of playerList;let i = index ">{{player}}</ion-item>
+      </ion-list>
+            
+</ion-content>
+
+
+
+
