@@ -5,6 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { AES256 } from '@ionic-native/aes-256';
 import { AlertController } from 'ionic-angular';
+import { ResultsPage } from '../results/results';
+import { ScavengerHuntPage } from '../scavenger-hunt/scavengerhunt';
 
 /**
  * Generated class for the LoginPage page.
@@ -58,6 +60,12 @@ export class LoginPage {
     });
     alert.present();
   }
+  
+
+  // login(){
+  //   this.navCtrl.push(ScavengerHuntPage)
+  // }
+
 
   login() {
     if(!this.data.username)
@@ -72,7 +80,7 @@ export class LoginPage {
     }
     else{
     
-    this.encryptPswrd(this.data.password).then(encryptpswrd=>{
+      this.encryptPswrd(this.data.password).then(encryptpswrd=>{
     console.log(this.data.password)
    
     var link_register = 'https://www.fitbit.com/oauth2/authorize?response_type=code&client_id=22D8TS&redirect_uri=https%3A%2F%2Fkidsteam.boisestate.edu%2Fkidfit%2Fhandle_redirect_work.php&scope=activity%20heartrate%20location%20nutrition%20profile%20settings%20sleep%20social%20weight&prompt=login consent&state=';

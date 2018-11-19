@@ -1,16 +1,258 @@
 page-scavengerhunt {
 
-.card{
-    background-color:dodgerblue;
-    text-align: center;
-    color:white;
-    border-radius: 15px;
-}
+    .icons{
+        size: 100%;
+    }
 
-.title{
-    color:white;
-}
+    .bg-start{
+        background-image: url('../assets/imgs/start.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
 
+    .bg-image1{
+        background-image: url('../assets/imgs/bowl.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
 
+    .bg-image2{
+        background-image: url('../assets/imgs/broom.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
 
+    .bg-image3{
+        background-image: url('../assets/imgs/car.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image4{
+        background-image: url('../assets/imgs/cards.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image5{
+        background-image: url('../assets/imgs/comb.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image6{
+        background-image: url('../assets/imgs/cup.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image7{
+        background-image: url('../assets/imgs/fork.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image8{
+        background-image: url('../assets/imgs/hat.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image9{
+        background-image: url('../assets/imgs/lego.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image10{
+        background-image: url('../assets/imgs/plate.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image11{
+        background-image: url('../assets/imgs/shoes.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image12{
+        background-image: url('../assets/imgs/socks.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image13{
+        background-image: url('../assets/imgs/spatula.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image14{
+        background-image: url('../assets/imgs/spoon.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image15{
+        background-image: url('../assets/imgs/teddybear.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image16{
+        background-image: url('../assets/imgs/toytrain.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
+
+    .bg-image17{
+        background-image: url('../assets/imgs/winterhat.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 28em;
+        box-shadow:
+            inset 0 0 2px 0 rgba(255,255,255,.4),
+            inset 0 0 3px 0 rgba(0,0,0,.4),
+            inset 0 0 3px 5px rgba(0,0,0,.05),
+            2px 2px 4px 0 rgba(0,0,0,.25);
+        border-radius: 4px;
+        padding: 14em 14em;
+    }
 }

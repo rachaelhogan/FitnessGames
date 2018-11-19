@@ -2,11 +2,9 @@ import { Component,NgZone } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
-import { ScoreBoardPage } from '../score-board/score-board';
+//import { ScoreBoardPage } from '../score-board/score-board';
 import { Events } from 'ionic-angular';
-import { Brightness } from '@ionic-native/brightness';
-import { AlertController } from 'ionic-angular';
-import { ResultsPage } from '../results/results';
+//import { Brightness } from '@ionic-native/brightness';
 /**
  * Generated class for the GameInstancePage page.
  *
@@ -20,7 +18,6 @@ export interface CountdownTimer {
   hasStarted: boolean;
   hasFinished: boolean;
   displayTime: string;
-  
   
 }
 @IonicPage()
@@ -52,43 +49,31 @@ export class GameInstancePage {
   endingActivityTime=0;
   timeRemaining:any;
   timer:CountdownTimer;
-  itemcount: any;
   bgImage:any;
-  p1Image: any;
   brightnessValue =0.8;
-  selfName="";
-  userSteps;
-  playerStepList=[];
-  playerActiveMinuteList=[];
-  playerIDList=[];
-  playerWinStatusList=[];
-  playerWinStepsList=[]
-  playerWinIDList=[];
-  playerWinNameList=[];
-  selfID:null;
-  selfGameStatus="";
-  activeMinutesAccumulated=0;
-  stepsAccumulated=0;
-  wWidth: number;
-  playerCount = 0;
-
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,private storage:Storage,public httpClient:HttpClient,private zone : NgZone,private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private storage:Storage,public httpClient:HttpClient,private zone : NgZone,public events: Events) {
     this.gameInstanceID = this.navParams.get('gameInstanceID');
-    this.userSteps= this.navParams.get('steps');
-    console.log(this.gameInstanceID);
+    
     
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GameInstancePage');
-    this.wWidth = window.innerWidth;
-    this.p1Image="bg-start";
-    this.storage.set("itemCount",0);
   }
 
   ionViewWillEnter()
   {
+    // Notification for gameStart
+    this.events.subscribe('gameStart',(data)=>{
+      if(data['gameInstanceID'] == this.gameInstanceID)
+        {this.zone.run(()=> this.refreshView());}
+    });
+
+    // Notification for gameOver
+    this.events.subscribe('gameOver',(data)=>{
+      if(data['gameInstanceID'] == this.gameInstanceID)
+      { this.zone.run(()=> this.refreshView());}
+    });
 
     console.log('ionViewWillEnter GameInstancePage');
     this.zone.run(()=> this.refreshView());
@@ -96,8 +81,9 @@ export class GameInstancePage {
 
   ionViewWillLeave()
   {
-  
-   
+    this.events.unsubscribe('gameStart')
+    this.events.unsubscribe('gameOver');
+    //this.brightness.setBrightness(0.75)
   }
 
   getUsername()
@@ -178,7 +164,7 @@ export class GameInstancePage {
     this.editing=true;
   }
 
-  
+  // TODO API WONT WORK 
   getActiveGameDetail(gameIID)
   {
     var link = 'https://kidsteam.boisestate.edu/kidfit/getActiveGameDetail.php?self=';
@@ -215,7 +201,7 @@ export class GameInstancePage {
         {
           this.navCtrl.push('InvalidLoginPage', {error: groupNameUpdateData['error']});
         }
-        else {
+        else if(groupNameUpdateData['update']){
           this.groupName =groupNameUpdateData['newGroupName'];
           this.editing=false;
           this.zone.run(()=> this.refreshView());
@@ -260,7 +246,6 @@ export class GameInstancePage {
             this.navCtrl.push('InvalidLoginPage', {error:addPlayerData['error']});  
           }
           else{
-            this.data.frndemail="";
             this.zone.run(()=> this.refreshView());            
           }
         })
@@ -287,7 +272,7 @@ export class GameInstancePage {
     })  
   }
 
-  
+  // TODO  ---> DONE 
 StartGame()
 {
  
@@ -307,9 +292,9 @@ StartGame()
 
 getGameID()
 {
-  var link = 'https://kidsteam.boisestate.edu/kidfit/get_gameID.php?gameName=scavengerHunt';
+  var link = 'https://kidsteam.boisestate.edu/kidfit/get_gameID.php?gameName=escapeTheTunnelSyncCollaborative';
   link=link.concat('&metric=')
-  link=link.concat('steps')
+  link=link.concat('activityTime')
 
   return new Promise(resolve => {
     this.httpClient.get(link)
@@ -342,236 +327,199 @@ getStartGameResponse(){
         })
   })
 }
-refreshView()
-  {
-  
-    console.log('refreshView GameInstancePage');
-    this.gameReadyToPlay=false;
-    this.gameInvited=false;
-    this.gameInProgress=false;
-    this.getUsername().then(usernamedata=>
-    {
-      this.getUserToken().then(usertokendata=>
-      {
-        this.getGameID().then(gameIDdata=>
-        {
-          this.gameID = gameIDdata['gameID'];
-          this.getGameDetails().then(gameDetails=>
+// CHECK
+getFitnessData()
+{
+  var link = 'https://kidsteam.boisestate.edu/kidfit/getFitnessData.php?self=';
+  link= link.concat(this.username);
+  link = link.concat('&accessToken=')
+  link= link.concat(this.accesstoken);
+  link=link.concat('&gameInstanceID=');
+  link= link.concat(this.gameInstanceID);
+  return new Promise(resolve => {
+    this.httpClient.get(link)
+        .subscribe(data => {
+          console.log("fitnessData",data);
+          console.log(data['steps']);          
+          if(data['steps']!=null){
+         // this.currentSteps = data['steps']-this.startSteps;
+          }
+          if(data['timeRemaining']<=0)
           {
-            console.log("gameDetails ",JSON.stringify(gameDetails) );
-            if(gameDetails['error'])
-            {
-              if(gameDetails['error'] =="Not an Active Game")
-              {
-                console.log('Warning','Game Over', 'OK');
-              }
-              else
-              {
-                console.log('Warning',gameDetails['error'], 'OK');
-              }
-            }
-            else
-            {
-              while(this.playerList.length>0)
-              {
-                this.playerList.pop();
-                this.userIDList.pop();
-              }
-              while(this.playerStatusList.length>0)
-              {
-                this.playerStatusList.pop();
-              }
-              while(this.playerStepList.length>0)
-              {
-                this.playerStepList.pop();
-                this.playerActiveMinuteList.pop();
-              }
-              while(this.playerWinIDList.length>0)
-              {
-                this.playerWinIDList.pop();
-                this.playerWinStatusList.pop();
-                this.playerWinNameList.pop();
-                this.playerWinStepsList.pop();
-              }
-              this.groupName = gameDetails['groupName'];
-              this.selfName= gameDetails['selfName'];
-              
-              if(gameDetails['owner']=='true')
-              {
-                this.ifOwner=true;
-              } 
-              else
-              {
-                this.ifOwner=false;
-              }
-
-
-              let i=0;
-              
-              // GAME QUIT
-              if(gameDetails['gameStatus']=='gameQuit')
-              {
-                this.navCtrl.pop()
-              }
-
-              // GAME OVER
-              if(gameDetails['gameStatus']=='gameOver')
-              {
-                this.gameInvited=false;
-                this.gameReadyToPlay=false;
-                this.gameInProgress=false;
-                this.gameOver=true; 
-                this.navCtrl.push('ResultsPage',{data:gameDetails})
-               
-              }
-              
-              // GAME INVITED
-              if(gameDetails['gameStatus']=='gameInvited')
-              {
-                //this.brightnessValue=0.75
-                this.gameInvited=true;
-                this.gameOver=false;
-                for(i=0;i<gameDetails['numberOfPlayers']*3;i=i+3)
-                { 
-                  let str = gameDetails[i];
-                  str=str.concat(" ( ");
-                  str=str.concat(gameDetails[i+2].substr(4));
-                  str=str.concat(" )");
-                  this.playerList.push(str);
-                  this.userIDList.push(gameDetails[i+1]);
-                  this.playerStatusList.push(gameDetails[i+2]);
-                }
-              }
-
-              // GAME READY TO PLAY
-              if(gameDetails['gameStatus']=='gameReadyToPlay')
-              {
-                //this.brightnessValue=0.75
-                this.gameReadyToPlay=true;
-                this.gameInvited=false;
-                for(i=0;i<gameDetails['numberOfPlayers']*3;i=i+3)
-                { 
-                  this.playerList.push(gameDetails[i]);
-                  this.userIDList.push(gameDetails[i+1]);
-                  this.playerStatusList.push(gameDetails[i+2]);
-                }
-              }
-
-               // GAME IN PROGRESS
-               if(gameDetails['gameStatus'] =='gameInProgress' )
-               {
-                 this.gameInProgress=true;
-                 this.gameReadyToPlay=false;
-                 this.gameInvited=false;
-                 this.getActiveGameDetail(this.gameInstanceID).then(activeGameData=>
+           // this.navCtrl.pop();
+            this.navCtrl.push('HotPotatoScoreBoardPage',{status:'Lost', gameInstanceID:this.gameInstanceID});
+          }
+         /* if(this.currentSteps>200)
+         {
+            this.passPotato().then(passPotatoResponse=>{
+               if(passPotatoResponse['error'])
                 {
-                  console.log("ActivegameDetails ",JSON.stringify(activeGameData) );
-                  if(activeGameData['error'])
+                  this.navCtrl.push('InvalidLoginPage',{error:JSON.stringify(passPotatoResponse['error'])});
+                }
+                else
+                {
+                  this.zone.run(()=> this.refreshView());
+                }
+             })
+            
+         }*/
+          resolve(data);
+        }, error => {
+          resolve(error);
+        })
+  })
+}
+
+refreshView()
+{
+  this.getUsername().then(usernamedata=>{
+    this.getUserToken().then(usertokendata=>{
+    this.getGameID().then(gameIDdata=>{
+      this.gameID = gameIDdata['gameID'];
+      this.getGameDetails().then(gameDetails=>{
+        
+        if(gameDetails['error'])
+        {
+          this.navCtrl.push('InvalidLoginPage', {error: gameDetails['error']});
+        }
+        else
+        {
+          console.log("gameDetails ",JSON.stringify(gameDetails) )
+          while(this.playerList.length>0)
+          {
+            this.playerList.pop();this.userIDList.pop();this.playerStatusList.pop();
+          }
+          this.groupName = gameDetails['groupName'];
+          if(gameDetails['owner']=='true')
+            this.ifOwner=true;
+          else
+            this.ifOwner=false;
+          let i=0;
+          if(gameDetails['gameStatus']=='gameOver'){
+            this.brightnessValue=0.75
+            this.gameInvited=false;
+            this.gameReadyToPlay=false;
+            this.gameInProgress=false;
+            this.gameOver=true;
+            this.navCtrl.push('ScoreBoardPage',{playerStatus:gameDetails['selfGameStatus']});
+            
+            // TODO
+                // Show total active minutes
+            //this.navCtrl.push('HotPotatoScoreBoardPage',{gameInstanceID:this.gameInstanceID})
+          }
+          if(gameDetails['gameStatus']=='gameInvited')
+          {
+            this.brightnessValue=0.75
+              this.gameInvited=true;
+              this.gameOver=false;
+              for(i=0;i<gameDetails['numberOfPlayers']*3;i=i+3)
+              { 
+                let str = gameDetails[i];
+                str=str.concat("(");
+                str=str.concat(gameDetails[i+2]);
+                str=str.concat(")");
+                this.playerList.push(str);
+                this.userIDList.push(gameDetails[i+1]);
+                this.playerStatusList.push(gameDetails[i+2]);
+              }
+          }
+          if(gameDetails['gameStatus']=='gameReadyToPlay')
+          {
+            this.brightnessValue=0.75
+              this.gameReadyToPlay=true;
+              this.gameInvited=false;
+              for(i=0;i<gameDetails['numberOfPlayers']*3;i=i+3)
+              { 
+                this.playerList.push(gameDetails[i]);
+                this.userIDList.push(gameDetails[i+1]);
+                this.playerStatusList.push(gameDetails[i+2]);
+              }
+          }
+          if(gameDetails['gameStatus'] =='gameInProgress' )
+          {
+              this.gameInProgress=true;
+              this.gameReadyToPlay=false;
+              this.gameInvited=false;
+              for(i=0;i<gameDetails['numberOfPlayers']*3;i=i+3)
+              { 
+                this.playerList.push(gameDetails[i]);
+                this.userIDList.push(gameDetails[i+1]);
+                this.playerStatusList.push(gameDetails[i+2]);
+              }  
+              this.getActiveGameDetail(this.gameInstanceID).then(activeGameData=>
+              {
+                  
+                if(activeGameData['error'])
                   {
-                   // this.presentAlert('Warning','Game Details fetch failed', 'OK');
-                   console.log(activeGameData['error']);
-                  }
-                  else if(activeGameData['syncError'])
-                  {
-                    console.log('Waiting',activeGameData['syncError']);   
+                    this.navCtrl.push('InvalidLoginPage',{error:JSON.stringify(activeGameData)});
                   }
                   else
                   {
-                    if(activeGameData['type']=='gameOver')
+                    console.log('activegamedetails ', JSON.stringify( activeGameData))
+                    if(activeGameData['type']=='GameOver')
                     {
-                      
-                      //this.brightnessValue=0.75;
+                      this.brightnessValue=0.75
                       this.gameInProgress=false;
                       this.gameReadyToPlay=false;
                       this.gameOver=true;
-                      this.selfID= activeGameData['selfID'];
-                      this.selfGameStatus=activeGameData['playerStatus']; // change to get Winner Status TODO 
-                     // this.navCtrl.push('ScoreBoardPage',{playerStatus:activeGameData['playerStatus']})
-                     if(this.selfGameStatus=='userWon')
-                     {
-                       this.selfGameStatus = 'won';
-                       this.bgImage= "flower-image4";
-                     }
-                     else
-                     {
-                       this.selfGameStatus='lost';
-                       this.bgImage = 'bg-imageLose';
-                     }
-                     console.log("here")
-                     for (i=0;i<activeGameData['numberOfPlayers']*4;i=i+4)
-                     {
-                       if(activeGameData[i+3]=='userWon')
-                       {
-                         this.playerWinIDList.push(activeGameData[i]);
-                         let str = activeGameData[i+1].concat('( ').concat(activeGameData[i+2]).concat(' steps ) ').concat('\t').concat('Won.');
-                         this.playerWinNameList.push(str);
-                         this.playerWinStepsList.push(activeGameData[i+2]);
-                         this.playerWinStatusList.push(activeGameData[i+3]);
-                       }
-                       else
-                       {
-                         this.playerIDList.push(activeGameData[i]);
-                         let str = activeGameData[i+1].concat('( ').concat(activeGameData[i+2]).concat(' steps ) ').concat('\t').concat('Lost.');
-                         this.playerList.push(str);
-                         this.playerStepList.push(activeGameData[i+2]);
-                         this.playerStatusList.push(activeGameData[i+3]);
-                       }
-                       
-
-                     }
-                     this.zone.run(()=> this.refreshView());
-                     console.log('playerList',this.playerList);
-                console.log('playerWinNameList', this.playerWinNameList);
+                      this.gameWonOrLost=activeGameData['playerStatus'];
+                      this.navCtrl.push('ScoreBoardPage',{playerStatus:activeGameData['playerStatus']})
                     }
                     else if(activeGameData['type']=='gameInProgress')
                     {
-                      this.timeRemaining= activeGameData['timeRemaining'];
-                      this.selfID = activeGameData['selfID'];
-                      this.userSteps = activeGameData['currentSteps'];
-                      for(i=0;i<activeGameData['numberOfPlayers']*4;i=i+4)
-                      { 
-                        let str = activeGameData[i+1].concat(':').concat('\t').concat(activeGameData[i+2]).concat(' steps')
-                        this.playerList.push(str);
-                        this.userIDList.push(activeGameData[i]);
-                        this.playerStepList.push(activeGameData[i+2]);
-                        this.playerActiveMinuteList.push(activeGameData[i+3]);
-                        if(activeGameData[i]==this.selfID)
-                        {
-                          this.stepsAccumulated = activeGameData[i+2];
-                          this.activeMinutesAccumulated = activeGameData[i+3];
-                        }
-                      } 
-                      console.log('playerList', this.playerList);
+                        this.currentActivityTime=activeGameData['currentActivityTime'];
+                        this.startActivityTime=activeGameData['startActiveTime'];
+                        this.endingActivityTime=activeGameData['endValue'];
+                        this.timeRemaining= activeGameData['timeRemaining'];
                       if(!this.timer)
-                      { 
-                        this.initTimer();
+                       { this.initTimer();
                         this.startTimer();
-                      }
-                      this.timer.secondsRemaining=this.timeRemaining;
+                       }
+
+                        // DIVIDE ACTIVITY SESSION INTO 4  groups to change background to display persuasive screen
+                        // Interval 1 1500>timeRemaining>=1125
+                       // Interval 2 1125>timeRemaining >= 750
+                       //Interval 3 750> timeRemaining >= 375
+                       // Interval 4 375> timeRemaining >=0
+                        if(this.timeRemaining>=1125)
+                        { this.bgImage="bg-image1";
+                       // this.brightness.setBrightness(0)
+                          }
+                        else if( this.timeRemaining < 1125 && this.timeRemaining>=750)
+                        {
+                          this.bgImage ="bg-image2"
+                        //  this.brightness.setBrightness(0.2)
+                        }
+                        else if( this.timeRemaining < 750 && this.timeRemaining>=375)
+                        {
+                          this.bgImage ="bg-image3"
+                        //  this.brightness.setBrightness(0.4) 
+                        }
+                        else
+                        {
+                          this.bgImage =  "bg-image4"
+                         // this.brightness.setBrightness(0.6)
+                        }
                     }
+                  }
 
-                    
 
-                  }// no error in getActiveGameDetail
-                })
-              }
 
-            }// no error in getGameDetails
-          })
-        })
+            })
+
+          } 
+          if(gameDetails['gameStatus']=='Over')
+          {
+            this.gameOver=true;
+
+          }
+        }  
       })
     })
-  }
+    })
+  })
+}
 
-
-presentAlert(message :string) {
-    let alert = this.alertCtrl.create({
-      title: 'Invalid Input',
-      subTitle: message,
-      buttons: ['OK']
-    });
-    alert.present();
-  }
 getSecondsAsDigitalClock(inputSeconds: number) {
   const secNum = parseInt(inputSeconds.toString(), 10); // don't forget the second param
   const hours = Math.floor(secNum / 3600);
@@ -621,36 +569,5 @@ timerTick() {
     }
   }, 1000);
 }
-
-getWidth(){
-  return this.wWidth;
-}
-
-getImage() {
-  let list = ["bg-image1","bg-image2","bg-image3","bg-image4",
-              "bg-image5","bg-image6","bg-image7","bg-image8",
-              "bg-image9","bg-image10","bg-image11","bg-image12",
-              "bg-image13","bg-image14","bg-image15","bg-image16","bg-image17"]
-  let index = Math.floor(Math.random() * 17);
-  var temp = this.p1Image;
-  this.p1Image = list[index];
-  if(temp == this.p1Image){
-    this.getImage();
-  }
-  this.itemcount = (this.storage.get("itemCount"));
-  this.itemcount += 1;
-  this.storage.set("itemCount", this.itemcount);
-}
-
-endGame(){
-  this.navCtrl.push('ResultsPage')
-}
-
-
-
-
-
-
-
 
 }
