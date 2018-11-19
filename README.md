@@ -1,6 +1,6 @@
 # FitnessGames
 
-## Pull the development branch, then follow these steps to compile
+## Steps to compile
 1. [Complete the steps to install IonicFramework](https://ionicframework.com/docs/intro/installation/)
 2. Run the following commands to setup additional environment variables and rebuild the project so it takes on your system paths and installs the necessary components:
    >- ionic cordova plugin add cordova-sqlite-storage
