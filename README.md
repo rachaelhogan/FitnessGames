@@ -9,6 +9,7 @@
 2. Enter the Directory, and make sure to switch to the newDevelopment branch
 
 **UPON REINSTALLING IN A VIRTUAL MACHINE, I DID NOT HAVE TO DO THIS BUT IF YOU RUN INTO ISSUES THIS MAY BE A SOLUTION**
+
 3. Run the following commands to setup additional environment variables and rebuild the project so it takes on your system paths and installs the necessary components:
    >- ionic cordova plugin add cordova-sqlite-storage
    >- npm install --save @ionic/storage
@@ -23,6 +24,7 @@
 
 ##Possible Errors
 Upon trying to install ionic or packages you may want to add, you may receive an error such as follows. Just run as Root to solve. 
+
 
 npm WARN checkPermissions Missing write access to /usr/lib/node_modules
 npm ERR! path /usr/lib/node_modules
@@ -44,6 +46,5 @@ npm ERR!
 npm ERR! If you believe this might be a permissions issue, please double-check the
 npm ERR! permissions of the file and its containing directories, or try running
 npm ERR! the command again as root/Administrator (though this is not recommended).
-
 npm ERR! A complete log of this run can be found in:
 npm ERR!     /home/rhogan/.npm/_logs/2018-11-28T17_56_17_416Z-debug.log
