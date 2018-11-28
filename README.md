@@ -19,7 +19,6 @@
 4. Start ionic serve to run the app.
    >- ionic serve (for the web browser)
          - this will only work for the welcome and login screen. The fitbit login needs to be able to open in app browser so you much use            a phone to continue to the other pages
-         
    >- ionic cordova run android --prod (to run on a plugged in android device)
 
 
