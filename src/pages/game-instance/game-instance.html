@@ -96,19 +96,19 @@
     <!-- <ion-card-header> -->
         <h1>Scavenger Hunt Game</h1>
         <h6 text-wrap>Find as many items as you can. Make sure you get in as many steps as possible!</h6>
-
-        <ion-content padding>
-          <ion-buttons>
-            <button class="{{p1Image}}" (click)="getImage()">
-            </button>
-          </ion-buttons>
-        </ion-content>
-
-
+       
         <button ion-button default block clear class="timer-button x-large">{{timer.displayTime}}</button>
         <ion-item text-wrap *ngFor="let player of playerList;let i = index ">{{player}}</ion-item>
+
+        <ion-buttons align="center">
+        <button align="center" class="{{p1Image}}" (click)="getImage()"></button>
+        </ion-buttons>
+        
+
+
       <!-- </ion-card-header> -->
     </ion-item>
+
       
 </ion-content>
    <!--
