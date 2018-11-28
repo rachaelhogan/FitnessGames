@@ -22,7 +22,8 @@
    > ionic cordova run android --prod (to run on a plugged in android device)
 
 
-##Possible Errors
+## Possible Errors
+
 Upon trying to install ionic or packages you may want to add, you may receive an error such as follows. Just run as Root to solve. 
 
 
