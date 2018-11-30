@@ -27,7 +27,6 @@
 
 Upon trying to install ionic or packages you may want to add, you may receive an error such as follows. Just run as Root to solve. 
 
-
 npm WARN checkPermissions Missing write access to /usr/lib/node_modules
 npm ERR! path /usr/lib/node_modules
 npm ERR! code EACCES
@@ -50,3 +49,10 @@ npm ERR! permissions of the file and its containing directories, or try running
 npm ERR! the command again as root/Administrator (though this is not recommended).
 npm ERR! A complete log of this run can be found in:
 npm ERR!     /home/rhogan/.npm/_logs/2018-11-28T17_56_17_416Z-debug.log
+
+## Next Steps
+
+>-Upon Player 1 retrieving an item, notfication should be sent to other players letting them know that Player 1 has found an item.
+>-An item count for the player should display on the Game-Instance Page
+>-After retrieving all the items, instead of showing picture of items to find, prompts to return the items should be shown
+
